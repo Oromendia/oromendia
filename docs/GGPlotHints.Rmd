@@ -1,0 +1,24 @@
+---
+title: "GGPlot Snippets"
+output: 
+  html_document:
+   smooth_scroll: yes
+   toc: yes
+   toc_depth: 3
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,eval = TRUE)
+```
+
+This is a collection of plots I find myself making often. 
+
+
+```{r}
+library(tidyverse)
+data(cars)
+cars %>% 
+  ggplot(aes(speed,dist)) +
+  geom_point()
+```
+

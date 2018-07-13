@@ -37,10 +37,10 @@ navbar:
       href: index.html
     - text: "Functions"
       href: "reference/"
-    - text: "Snippets"
-      href: "articles/"
     - text: "Code Examples"
       href: RCodeHints.html
+    - text: "Common Plots"
+      href: GGPlotHints.html
   right:    
     - icon: fa-github fa-lg
       text: "github"
