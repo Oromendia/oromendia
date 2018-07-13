@@ -39,7 +39,7 @@ navbar:
     - text: "Functions"
       href: "reference/"
     - text: "Code Examples"
-      href: RCodeHints.html
+      href: articles/RCodeHints.html
     - text: "Common Plots"
       href: articles/GGPlotHints.html
   right:    
