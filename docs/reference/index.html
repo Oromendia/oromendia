@@ -11,8 +11,8 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -48,7 +48,7 @@
   <body>
     <div class="container template-reference-index">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -66,12 +66,9 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fa fa-home"></span>
      
   </a>
-</li>
-<li>
-  <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
       
@@ -103,17 +100,11 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
+          <h2 id="section-exported-functions" class="hasAnchor"><a href="#section-exported-functions" class="anchor"></a>Exported Functions</h2>
+          <p class="section-desc"><p>Functions exported by oromendia</p></p>
         </th>
       </tr>
       <tr>
-        
-        <td>
-          <p><code><a href="COCreateTableOne.html">COCreateTableOne()</a></code> </p>
-        </td>
-        <td><p>Wrapper around tableone to print in RMD</p></td>
-      </tr><tr>
         
         <td>
           <p><code><a href="cleanupForMarkdown_univAndMultiGLM.html">cleanupForMarkdown_univAndMultiGLM()</a></code> </p>
@@ -122,63 +113,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="extract_mod_zeroinf_count.html">extract_mod_zeroinf_count()</a></code> </p>
+          <p><code><a href="COCreateTableOne.html">COCreateTableOne()</a></code> </p>
         </td>
-        <td><p>Extract nice coef table for negative binomial model</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="format_crr.html">format_crr()</a></code> </p>
-        </td>
-        <td><p>Print competing risks regression output with CI and P values</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="format_pval.html">format_pval()</a></code> </p>
-        </td>
-        <td><p>Format p value</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="format_tidy_cox.html">format_tidy_cox()</a></code> </p>
-        </td>
-        <td><p>Print coxph after using tidy</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="format_tidy_coxme.html">format_tidy_coxme()</a></code> </p>
-        </td>
-        <td><p>Print Cox Mixed effects regression output with CI and P values</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="format_tidy_gen.html">format_tidy_gen()</a></code> </p>
-        </td>
-        <td><p>Print generic regression output with CI and P values</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="format_tidy_lm.html">format_tidy_lm()</a></code> </p>
-        </td>
-        <td><p>Print linear model after using tidy</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ggplotRegression.html">ggplotRegression()</a></code> </p>
-        </td>
-        <td><p>Make a crude scatterplot with regression line printed on it</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="myLinear_coefTable.html">myLinear_coefTable()</a></code> </p>
-        </td>
-        <td><p>Extract nice coef table for linear model</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="myLogistic_coefTable.html">myLogistic_coefTable()</a></code> </p>
-        </td>
-        <td><p>Extract nice coef table for  binomial model</p></td>
+        <td><p>Wrapper around tableone to print in RMD</p></td>
       </tr>
     </tbody>
     </table>
@@ -187,14 +124,14 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-exported-functions">Exported Functions</a></li>
     </ul>
   </div>
 </div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by First Last.</p>
+  <p>Developed by Clara Oromendia.</p>
 </div>
 
 <div class="pkgdown">

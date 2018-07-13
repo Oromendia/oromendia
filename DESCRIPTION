@@ -1,8 +1,8 @@
 Package: oromendia
-Title: What the Package Does (one line, title case)
+Title: Clara Oromendia's suite of R functions
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: person("Clara", "Oromendia", email = "mco2004@med.cornell.edu", role = c("aut", "cre"))
+Description: Collection of functions for statistical collaborations at Weill Cornell Medicine. Most functions built to be used within an RMarkdown environment exporting to html. 
 Depends: R (>= 3.5.0)
 License: What license is it under?
 Encoding: UTF-8
