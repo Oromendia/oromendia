@@ -1,0 +1,15 @@
+---
+title: "Oromendia Package"
+description: "This is a collection of functions used in applied work"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Package description}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,eval = TRUE)
+```
+
+This is a collection of function plots I find myself making often. 
