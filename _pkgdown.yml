@@ -2,7 +2,7 @@ title: oromendia
 url: https://oromendia.github.io/oromendia/
 template:
   params:
-    bootswatch: yeti
+    bootswatch: flatly
     
 reference:
   - title: Exported Functions
