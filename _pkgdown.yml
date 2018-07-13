@@ -26,10 +26,11 @@ reference:
   - title: Vignettes
     contents:
     - GGPlotHints
+
 articles:
-  - title: "R snippets"
+  - title: "Plot snippets"
     desc: >
-      R code Hints
+      Plot code Hints
     contents:
     - GGPlotHints
 
