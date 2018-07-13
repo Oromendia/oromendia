@@ -1,25 +1,35 @@
 ---
-title: "R Code Hints"
-author: "Clara Oromendia"
-date: "7/13/2018"
-output: html_document
+title: "R Code Snippets"
+output: 
+  html_document:
+   smooth_scroll: yes
+   toc: yes
+   toc_depth: 3
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
 ```
 
-## R Markdown
-
 This is a collection of snippets I find myself repeating or searching. 
-```{r}
-# Linear mixed models code from Patrick Heagerty's class:
-summary(lme(like_test~uip_dx, method="ML",random=reStruct(~1|id, pdClass="pdSymm", REML=F)))
 
-# Remove underscores from column names 
+### Linear mixed models 
+
+Code from Patrick Heagerty's class
+
+```{r}
+summary(lme(like_test~uip_dx, method="ML",random=reStruct(~1|id, pdClass="pdSymm", REML=F)))
+```
+
+<br><br><br>
+
+### Remove underscores from column names 
+```{r}
 colnames(dat) = gsub("_",".",colnames(dat))
 colnames(rawDat) = tolower(colnames(rawDat))
 ```
+
+<br><br><br>
 
 ### Export R dataset for SAS
 ```{r}
@@ -28,6 +38,7 @@ write.foreign(df=dat, datafile=paste0(dir,"/dat_03_02datafile.csv"),
 	codefile=paste0(dir,"/dat_03_02codeFile.sas"), package="SAS")
 ```
 
+<br><br><br>
 
 ### SAS code hints to save labels
 ```{r}
@@ -39,6 +50,8 @@ data a.labels(keep=NAME LABEL);
 	set contents; 
 run;
 ```
+
+<br><br><br>
 
 ### Stop code until you click "continue"
 ```{r}
@@ -53,30 +66,41 @@ waitForClick <- function() {
 waitForClick()
 ```
 
+<br><br><br>
 
 ### Format REDCap data nicely
 ```{r}
 # Format nicely categorical variables
-	makeCat <- function(varNm){
-		cols = grep(varNm,colnames(wideDat))
-		cats = gsub(".","",gsub(paste0(varNm,"..choice."),"",colnames(wideDat)[cols]),fixed=T)
-		all = NA
-		for (c in 1:length(cats)) {
-			all[wideDat[,cols[c]] == "Checked"] = paste(all[wideDat[,cols[c]] == "Checked"],cats[c])
-		}
-		all = gsub("NA ","",all)
-		return(all)
+makeCat <- function(varNm){
+  cols = grep(varNm,colnames(wideDat))
+	cats = gsub(".","",gsub(paste0(varNm,"..choice."),"",colnames(wideDat)[cols]),fixed=T)
+	all = NA
+	for (c in 1:length(cats)) {
+	  all[wideDat[,cols[c]] == "Checked"] = paste(all[wideDat[,cols[c]] == "Checked"],cats[c])
 	}
-	# Add more as needed for analysis
-	varsToCondense = c("Gastrointestinal.symptoms")
-	dat = subset(wideDat, select = c(colnames(wideDat)[-grep("choice..",colnames(wideDat))]))
-	dat = cbind(wideDat,mapply(makeCat,varsToCondense)) # keep multiple columns as well
-	dim(dat)
+	all = gsub("NA ","",all)
+	return(all)
+}
+# Add more as needed for analysis
+varsToCondense = c("Gastrointestinal.symptoms")
+dat = subset(wideDat, select = c(colnames(wideDat)[-grep("choice..",colnames(wideDat))]))
+dat = cbind(wideDat,mapply(makeCat,varsToCondense)) # keep multiple columns as well
+dim(dat)
 
-# Change all the Checked/unchecked to yes/no
-	for(col in 1:ncol(dat)) if(length(table(dat[,col]))>1 & levels(as.factor(dat[,col]))[1] =="Checked") levels(dat[,col]) = c("Yes","No")
-	for(col in 1:ncol(dat)) if(length(table(dat[,col]))==1 & !is.na(names(table(dat[,col]))[1]) & names(table(dat[,col]))[1] == "Unchecked") dat[,col] = "No"
+# Change all checked/unchecked columns to yes/no
+for(col in 1:ncol(dat)) {
+  if(length(table(dat[,col]))>1 & levels(as.factor(dat[,col]))[1] =="Checked"){
+    levels(dat[,col]) = c("Yes","No")
+  }
+}
+for(col in 1:ncol(dat)) {
+  if(length(table(dat[,col]))==1 & !is.na(names(table(dat[,col]))[1]) & names(table(dat[,col]))[1] == "Unchecked") {
+    dat[,col] = "No"
+  }
+}
 ```
+
+<br><br><br>
 
 
 ### Load Times New Roman Font and use in plotting
@@ -92,12 +116,16 @@ fonts() # list of fonts
 plot(1,1,family="Times New Roman")
 ```
 
+<br><br><br>
+
 ### Overall plot title 
 ```{r}
 par(mar=c(0,0,0,0),xpd=T)
 plot(0,type="n",bty="n",axes=F,ylab="",xlab="")
 text(-.8,"MEP Increase from Baseline Under PAS by Dose",cex=2,font=2,family="Times New Roman")
 ```
+
+<br><br><br>
 
 ### Overall legend 
 ```{r}
@@ -106,8 +134,10 @@ plot(0,type="n",bty="n",axes=F,ylab="",xlab="")
 legend("top",col=2,lwd=4,c("Mean change from baseline"),bty="n",cex=1.5)
 ```
 
+<br><br><br>
 
-# Print long table into markdown
+
+### Print long table into markdown
 ```{r}
 kable(., format="html") %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), 
@@ -115,12 +145,17 @@ kable(., format="html") %>%
   scroll_box(height = "500px")
 ```
 
-### Plot of coefficients
+<br><br><br>
+
+### Plot of regression coefficients
 ```{r}
 m1 = glm(onset ~ warl + gdpenl + lpopl1 + lmtnest + ncontig + Oil + nwstate + instab + polity2l + ethfrac + relfrac, data = df, family = "binomial")
 library(coefplot)
 coefplot(m1)
 ```
+
+<br><br><br>
+
 
 ### Markdown barplot with percents and counts
 ```{r}
@@ -136,6 +171,9 @@ dat %>%
   labs(title="adt_s by SPOP mutation status",subtitle=paste0("Chisq p=",round(chisq.test(dat$SPOPmut_m,dat$adt_s)$p.val,3))) +
   guides(fill=FALSE)
 ```
+
+<br><br><br>
+
 
 ### Lasagna plot
 ```{r}
@@ -159,6 +197,7 @@ matrix = as.matrix(df)
 lasagna(matrix)
 ```
 
+<br><br><br>
 
 
 ### Dataset with pairwise p values to plot
@@ -185,8 +224,9 @@ dat_all %>%
             annotation= pv_final$p.value_f) 
 ```
 
+<br><br><br>
 
-## REDCAp to Rmd
+### REDCap to Rmd
 ```{r}
 read_csv(here("Docs_2018_0403/ClinicalGenomicsOfCa_DATA_LABELS_2018-04-03_1419.csv")) %>% 
   clean_names() %>% 
@@ -198,3 +238,36 @@ read_csv(here("Docs_2018_0403/ClinicalGenomicsOfCa_DATA_LABELS_2018-04-03_1419.c
   remove_empty_cols() # from janitor package
 ```
 
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 12px;
+  }
+td {  /* Table  */
+  font-size: 8px;
+}
+h1.title {
+  font-size: 38px;
+  color: DarkRed;
+}
+h1 { /* Header 1 */
+  font-size: 28px;
+  color: DarkBlue;
+}
+h2 { /* Header 2 */
+    font-size: 22px;
+  color: DarkBlue;
+}
+h3 { /* Header 3 */
+  font-size: 18px;
+  font-family: "Times New Roman", Times, serif;
+  color: DarkBlue;
+}
+code.r{ /* Code block */
+    font-size: 12px;
+}
+pre { /* Code block - determines code spacing between lines */
+    font-size: 14px;
+}
+</style>
