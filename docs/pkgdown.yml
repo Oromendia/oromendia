@@ -3,6 +3,7 @@ pkgdown: 1.1.0.9000
 pkgdown_sha: 98bfe0fdfd59b33ef1a88ef6896cd60f805f0e81
 articles:
   GGPlotHints: GGPlotHints.html
+  RCodeHints: RCodeHints.html
 urls:
   reference: https://oromendia.github.io/oromendia//reference
   article: https://oromendia.github.io/oromendia//articles
