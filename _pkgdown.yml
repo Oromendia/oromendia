@@ -25,16 +25,21 @@ reference:
       - '`COCreateTableOne`'
       - '`ggplotRegression`'
 navbar:
+  title: "sparklyr"
   type: inverse
   left:
-    - icon: fa-home
+    - text: "Home"
       href: index.html
+    - text: "dplyr"
+      href: articles/dplyr.html
+    - text: "ML"
+      href: articles/ML.html
+    - text: "Extensions"
+      href: articles/extensions.html
+    - text: "Deployment"
+      href: articles/deployment.html
     - text: "Reference"
       href: "reference/"
-    - icon: fa-file-code-o 
-      text: "functions"
-      href: reference/index.html
-  right:    
-    - icon: fa-github fa-lg
-      text: "github"
-      href: https://github.com/oromendia/oromendia/
+  right:
+    - icon: fa-github
+      href: https://github.com/rstudio/sparklyr
