@@ -10,6 +10,7 @@ vignette: >
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,eval = TRUE)
+library(tidyverse)
 ```
 
 This is a collection of plots I find myself making often. 
@@ -18,7 +19,6 @@ This is a collection of plots I find myself making often.
 ### Scatter plot 
 
 ```{r}
-library(tidyverse)
 data(CO2)
 CO2 %>% 
   ggplot(aes(conc,uptake)) +
@@ -31,5 +31,6 @@ CO2 %>%
 library(coefplot)
 data("mtcars")
 m1 = glm(am == 1 ~ mpg + cyl + disp  + wt, data = mtcars, family = "binomial") %>% 
-  coefplot()
+  coefplot() %>% 
+  print()
 ```
