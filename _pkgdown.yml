@@ -29,6 +29,8 @@ navbar:
   left:
     - icon: fa-home
       href: index.html
+    - text: "Reference"
+      href: "reference/"
     - icon: fa-file-code-o 
       text: "functions"
       href: reference/index.html
