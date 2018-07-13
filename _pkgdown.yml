@@ -7,7 +7,7 @@ template:
 reference:
   - title: "Regressions"
     desc: >
-      Functions for outputting regressions in a digestible manner
+      Functions for outputting regressions in a digestible manner.
     contents: 
       - '`cleanupForMarkdown_univAndMultiGLM`'
       - '`extract_mod_zeroinf_count`'
@@ -29,12 +29,12 @@ navbar:
   left:
     - icon: fa-home
       href: index.html
-    - text: "Reference"
+    - text: "Functions"
       href: "reference/"
-    - icon: fa-file-code-o 
-      text: "functions"
-      href: reference/index.html
+    - text: "Code Examples"
+      href: RCodeHints.html
   right:    
     - icon: fa-github fa-lg
       text: "github"
       href: https://github.com/oromendia/oromendia
+      
