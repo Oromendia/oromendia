@@ -15,11 +15,21 @@ knitr::opts_chunk$set(echo = TRUE,eval = TRUE)
 This is a collection of plots I find myself making often. 
 
 
+### Scatter plot 
+
 ```{r}
 library(tidyverse)
-data(cars)
-cars %>% 
-  ggplot(aes(speed,dist)) +
+data(CO2)
+CO2 %>% 
+  ggplot(aes(conc,uptake)) +
   geom_point()
 ```
 
+
+### Plot of regression coefficients
+```{r}
+library(coefplot)
+data("mtcars")
+m1 = glm(am == 1 ~ mpg + cyl + disp  + wt, data = mtcars, family = "binomial") %>% 
+  coefplot()
+```
