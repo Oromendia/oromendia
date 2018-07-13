@@ -1,0 +1,17 @@
+title: oromendia
+url: http://oromendia.github.io/oromendia
+template:
+  params:
+    bootswatch: flatly
+    
+reference:
+  - title: Exported Functions
+    desc: Functions exported by oromendia
+    contents:
+      - '`cleanupForMarkdown_univAndMultiGLM`'
+      - '`COCreateTableOne`'
+navbar:
+  type: inverse
+  left:
+    - icon: fa-home
+      href: index.html
