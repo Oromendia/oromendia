@@ -6,44 +6,31 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
 ```
 
 ## R Markdown
 
 This is a collection of snippets I find myself repeating or searching. 
-```{r,eval=FALSE}
-# CLara Oromendia
-# Bits of R-code that are used often and I try to find in other projects
-
+```{r}
 # Linear mixed models code from Patrick Heagerty's class:
 summary(lme(like_test~uip_dx, method="ML",random=reStruct(~1|id, pdClass="pdSymm", REML=F)))
 
 # Remove underscores from column names 
 colnames(dat) = gsub("_",".",colnames(dat))
 colnames(rawDat) = tolower(colnames(rawDat))
+```
 
-
-# Reorder the levels:
-x = factor(x,levels(factor(x))[c(4,5,1:3)])
-
-# Export R dataset for SAS
+### Export R dataset for SAS
+```{r}
 library(foreign)
 write.foreign(df=dat, datafile=paste0(dir,"/dat_03_02datafile.csv"), 
 	codefile=paste0(dir,"/dat_03_02codeFile.sas"), package="SAS")
+```
 
 
-# Add headers to each page in longtable
-add.to.row <- list(pos = list(0), command = paste0("\\hline\n\\endhead\n","\\hline\n","\\multicolumn{",dim(table)[2] + 1, "}{l}","{\\footnotesize Continued on next page}\n","\\endfoot\n","\\endlastfoot\n"))
-print(table.big, hline.after=c(-1), add.to.row = add.to.row,tabular.environment = "longtable")
-
-# Gradient coloring scale 
-colsG =brewer.pal(5,"OrRd")
-
-# Keep trailing zeros, better than round, but turns into string
-sprintf("%.3f", round(5.2,3))
-
-# SAS code hints to save labels
+### SAS code hints to save labels
+```{r}
 proc contents data=TMP1.EXACTBASELINE_PEX11_160307 out=contents noprint;
 run;
 
@@ -51,26 +38,10 @@ libname a "O:/Divisional/BIO/mco2004/DoM/Spiromics - EXACT";
 data a.labels(keep=NAME LABEL);
 	set contents; 
 run;
+```
 
-# SPSS save as Excel with lables and import
-
-# Load sheets in Excel file
-library(gdata)
-dat_samsung = read.xls(paste0(dir,"/Data 2017 03 08/RIPK3 Samsung.xlsx"),sheet=1,perl="C:/Perl64/bin/perl.exe")
-
-
-# Trim whitespaces
-colnames(dat) = gsub("(^[[:space:]]+|[[:space:]]+$)", "", colnames(dat))
-
-# Nice Kaplan Meier with at risk table
-col = brewer.pal(7, "YlOrRd")[-1]
-plot(
-	prodlim(Hist(time=DX.LASTCONTACT.DEATH.MONTHS,event=OSevent)~RX.HOSP.SURG.APPR.2010,data=subDat),
-	logrank=T,confint=F,marktime=T,legend.cex=.8,lwd=2,legend.x="bottomleft",atrisk.title="At Risk",legend.title="Cystectomy",plot.main="Kaplan Meier for Overall Survival by Cystectomy",col=col,xlab="Time in Months"
-	)
-
-
-# Function to stop code until you click "continue"
+### Stop code until you click "continue"
+```{r}
 library(tcltk)
 waitForClick <- function() {
     tt <- tktoplevel()
@@ -79,12 +50,13 @@ waitForClick <- function() {
     tkbind(tt,'<Key>', function()tkdestroy(tt) )
     tkwait.window(tt)
 }
-# waitForClick()
+waitForClick()
+```
 
 
-# Format REDCap data nicely
-
-	# Format nicely categorical variables
+### Format REDCap data nicely
+```{r}
+# Format nicely categorical variables
 	makeCat <- function(varNm){
 		cols = grep(varNm,colnames(wideDat))
 		cats = gsub(".","",gsub(paste0(varNm,"..choice."),"",colnames(wideDat)[cols]),fixed=T)
@@ -101,50 +73,57 @@ waitForClick <- function() {
 	dat = cbind(wideDat,mapply(makeCat,varsToCondense)) # keep multiple columns as well
 	dim(dat)
 
-	# Change all the Checked/unchecked to yes/no
+# Change all the Checked/unchecked to yes/no
 	for(col in 1:ncol(dat)) if(length(table(dat[,col]))>1 & levels(as.factor(dat[,col]))[1] =="Checked") levels(dat[,col]) = c("Yes","No")
 	for(col in 1:ncol(dat)) if(length(table(dat[,col]))==1 & !is.na(names(table(dat[,col]))[1]) & names(table(dat[,col]))[1] == "Unchecked") dat[,col] = "No"
+```
 
-# Single baseline table 
-contTable1 <- function(x) cbind(sprintf("%.1f",mean(x,na.rm=T)),sprintf("%.1f",sd(x,na.rm=T)))
-binaryTab1 <- function(x) cbind(sum(x,na.rm=T),sprintf("%.1f",100*mean(x,na.rm=T)))
-table_singleGroup = rbind(
-	contTable1(dat$pex.age),
-	contTable1(dat$ex.sd.w4),
-	binaryTab1(dat$gender == "Male"),
-	binaryTab1(dat$gold.myDef == "Stage IV")
-	)
-rownames(table_singleGroup) = c("Age","BMI","6min walk","Pre-FEV","Post-FEV","Pre-FVC","pi10 avg","pi10 thick","BODE","Dyspnea","PSQ","SGR","HDS Anxiety","HDS Depression","EXACT Avg","EXACT St Dev","RS Avg","RS St Dev","\\\\ Male Gender","Current smoker","Emphysema","Inhaled bronchodilators","Inhaled steroid","GOLD Stage I","GOLD Stage II","GOLD Stage III","GOLD Stage IV")
-colnames(table_singleGroup) = c("mean/N","sd/pct")
-print(xtable(table_singleGroup, caption="Sample characteristics"),file=outTexReport,tabular.environment="longtable",sanitize.rownames=identity)
 
-# Load Times New Roman Font and use in plotting
+### Load Times New Roman Font and use in plotting
+
+Note that this is much easier with ggplot. 
+
+```{r}
 install.packages("extrafont")
 library(extrafont)
 # font_import() (takes a long time)
 loadfonts(device="win")  #Register fonts for Windows bitmap output
 fonts() # list of fonts 
 plot(1,1,family="Times New Roman")
+```
 
+### Overall plot title 
+```{r}
+par(mar=c(0,0,0,0),xpd=T)
+plot(0,type="n",bty="n",axes=F,ylab="",xlab="")
+text(-.8,"MEP Increase from Baseline Under PAS by Dose",cex=2,font=2,family="Times New Roman")
+```
 
-	# Overall plot title 
-		par(mar=c(0,0,0,0),xpd=T)
-		plot(0,type="n",bty="n",axes=F,ylab="",xlab=""); text(-.8,"MEP Increase from Baseline Under PAS by Dose",cex=2,font=2,family="Times New Roman")
-		# Overall legend 
-		par(mar=c(0,0,0,0),xpd=T,family="Times New Roman")
-		plot(0,type="n",bty="n",axes=F,ylab="",xlab=""); legend("top",col=2,lwd=4,c("Mean change from baseline"),bty="n",cex=1.5)
+### Overall legend 
+```{r}
+par(mar=c(0,0,0,0),xpd=T,family="Times New Roman")
+plot(0,type="n",bty="n",axes=F,ylab="",xlab="")
+legend("top",col=2,lwd=4,c("Mean change from baseline"),bty="n",cex=1.5)
+```
+
 
 # Print long table into markdown
-  kable(., format="html") %>%
+```{r}
+kable(., format="html") %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), 
-                full_width = F, position = "center") %>% scroll_box(height = "500px")
+                full_width = F, position = "center") %>% 
+  scroll_box(height = "500px")
+```
 
-# PLot of coefficients
+### Plot of coefficients
+```{r}
 m1 = glm(onset ~ warl + gdpenl + lpopl1 + lmtnest + ncontig + Oil + nwstate + instab + polity2l + ethfrac + relfrac, data = df, family = "binomial")
 library(coefplot)
 coefplot(m1)
+```
 
-# Markdown barplot with percents and counts
+### Markdown barplot with percents and counts
+```{r}
 dat %>% 
   filter(!is.na(adt_s)) %>% 
   ggplot(aes(x=adt_s,  group=SPOPmut_m)) + 
@@ -156,8 +135,10 @@ dat %>%
   scale_y_continuous(labels=percent) +
   labs(title="adt_s by SPOP mutation status",subtitle=paste0("Chisq p=",round(chisq.test(dat$SPOPmut_m,dat$adt_s)$p.val,3))) +
   guides(fill=FALSE)
+```
 
- ## Lasagna plot
+### Lasagna plot
+```{r}
 # library(devtools); install_github("swihart/lasagnar")
 library(lasagnar)
 longDat %>%
@@ -176,8 +157,12 @@ df$timesubjid = NULL
 matrix = as.matrix(df)
 
 lasagna(matrix)
+```
 
-# Dataset with pairwise p values to plot
+
+
+### Dataset with pairwise p values to plot
+```{r}
 paris <- combn(levels(dat_all$GOLD_arabicNum_GOLDold), 2, simplify = FALSE)
 pairs_pval <- tidy(with(dat_all[ dat_all$cohort %in% c("1st","2nd"),], pairwise.wilcox.test(mtDNA_log10, GOLD_arabicNum_GOLDold, p.adjust.method = "BH")))
 dat_pairs <- do.call(rbind.data.frame, paris)
@@ -198,8 +183,11 @@ dat_all %>%
   labs(title="mtDNA by GOLD in 1st and 2nd cohorts",y="Log 10 mtDNA",x="") +
   geom_signif(comparisons=paris,textsize = 3.5, vjust = 0.1, step_increase=0.15,
             annotation= pv_final$p.value_f) 
+```
 
-  # REDCAp to Rmd
+
+## REDCAp to Rmd
+```{r}
 read_csv(here("Docs_2018_0403/ClinicalGenomicsOfCa_DATA_LABELS_2018-04-03_1419.csv")) %>% 
   clean_names() %>% 
   mutate_all(funs(checkedToYes)) %>% 
@@ -208,6 +196,5 @@ read_csv(here("Docs_2018_0403/ClinicalGenomicsOfCa_DATA_LABELS_2018-04-03_1419.c
   select(-contains("complete")) 
   filter(repeat_instrument == "Biopsies") %>% 
   remove_empty_cols() # from janitor package
-
 ```
 

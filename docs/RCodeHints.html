@@ -131,65 +131,31 @@ $(document).ready(function () {
 <div id="r-markdown" class="section level2">
 <h2>R Markdown</h2>
 <p>This is a collection of snippets I find myself repeating or searching.</p>
-<pre class="r"><code># CLara Oromendia
-# Bits of R-code that are used often and I try to find in other projects
-
-# Linear mixed models code from Patrick Heagerty's class:
+<pre class="r"><code># Linear mixed models code from Patrick Heagerty's class:
 summary(lme(like_test~uip_dx, method=&quot;ML&quot;,random=reStruct(~1|id, pdClass=&quot;pdSymm&quot;, REML=F)))
 
 # Remove underscores from column names 
 colnames(dat) = gsub(&quot;_&quot;,&quot;.&quot;,colnames(dat))
-colnames(rawDat) = tolower(colnames(rawDat))
-
-
-# Reorder the levels:
-x = factor(x,levels(factor(x))[c(4,5,1:3)])
-
-# Export R dataset for SAS
-library(foreign)
+colnames(rawDat) = tolower(colnames(rawDat))</code></pre>
+<div id="export-r-dataset-for-sas" class="section level3">
+<h3>Export R dataset for SAS</h3>
+<pre class="r"><code>library(foreign)
 write.foreign(df=dat, datafile=paste0(dir,&quot;/dat_03_02datafile.csv&quot;), 
-    codefile=paste0(dir,&quot;/dat_03_02codeFile.sas&quot;), package=&quot;SAS&quot;)
-
-
-# Add headers to each page in longtable
-add.to.row &lt;- list(pos = list(0), command = paste0(&quot;\\hline\n\\endhead\n&quot;,&quot;\\hline\n&quot;,&quot;\\multicolumn{&quot;,dim(table)[2] + 1, &quot;}{l}&quot;,&quot;{\\footnotesize Continued on next page}\n&quot;,&quot;\\endfoot\n&quot;,&quot;\\endlastfoot\n&quot;))
-print(table.big, hline.after=c(-1), add.to.row = add.to.row,tabular.environment = &quot;longtable&quot;)
-
-# Gradient coloring scale 
-colsG =brewer.pal(5,&quot;OrRd&quot;)
-
-# Keep trailing zeros, better than round, but turns into string
-sprintf(&quot;%.3f&quot;, round(5.2,3))
-
-# SAS code hints to save labels
-proc contents data=TMP1.EXACTBASELINE_PEX11_160307 out=contents noprint;
+    codefile=paste0(dir,&quot;/dat_03_02codeFile.sas&quot;), package=&quot;SAS&quot;)</code></pre>
+</div>
+<div id="sas-code-hints-to-save-labels" class="section level3">
+<h3>SAS code hints to save labels</h3>
+<pre class="r"><code>proc contents data=TMP1.EXACTBASELINE_PEX11_160307 out=contents noprint;
 run;
 
 libname a &quot;O:/Divisional/BIO/mco2004/DoM/Spiromics - EXACT&quot;;
 data a.labels(keep=NAME LABEL);
     set contents; 
-run;
-
-# SPSS save as Excel with lables and import
-
-# Load sheets in Excel file
-library(gdata)
-dat_samsung = read.xls(paste0(dir,&quot;/Data 2017 03 08/RIPK3 Samsung.xlsx&quot;),sheet=1,perl=&quot;C:/Perl64/bin/perl.exe&quot;)
-
-
-# Trim whitespaces
-colnames(dat) = gsub(&quot;(^[[:space:]]+|[[:space:]]+$)&quot;, &quot;&quot;, colnames(dat))
-
-# Nice Kaplan Meier with at risk table
-col = brewer.pal(7, &quot;YlOrRd&quot;)[-1]
-plot(
-    prodlim(Hist(time=DX.LASTCONTACT.DEATH.MONTHS,event=OSevent)~RX.HOSP.SURG.APPR.2010,data=subDat),
-    logrank=T,confint=F,marktime=T,legend.cex=.8,lwd=2,legend.x=&quot;bottomleft&quot;,atrisk.title=&quot;At Risk&quot;,legend.title=&quot;Cystectomy&quot;,plot.main=&quot;Kaplan Meier for Overall Survival by Cystectomy&quot;,col=col,xlab=&quot;Time in Months&quot;
-    )
-
-
-# Function to stop code until you click &quot;continue&quot;
-library(tcltk)
+run;</code></pre>
+</div>
+<div id="stop-code-until-you-click-continue" class="section level3">
+<h3>Stop code until you click “continue”</h3>
+<pre class="r"><code>library(tcltk)
 waitForClick &lt;- function() {
     tt &lt;- tktoplevel()
     tkpack( tkbutton(tt, text='     Yes - SAS code has run     ', command=function()tkdestroy(tt)),
@@ -197,12 +163,11 @@ waitForClick &lt;- function() {
     tkbind(tt,'&lt;Key&gt;', function()tkdestroy(tt) )
     tkwait.window(tt)
 }
-# waitForClick()
-
-
-# Format REDCap data nicely
-
-    # Format nicely categorical variables
+waitForClick()</code></pre>
+</div>
+<div id="format-redcap-data-nicely" class="section level3">
+<h3>Format REDCap data nicely</h3>
+<pre class="r"><code># Format nicely categorical variables
     makeCat &lt;- function(varNm){
         cols = grep(varNm,colnames(wideDat))
         cats = gsub(&quot;.&quot;,&quot;&quot;,gsub(paste0(varNm,&quot;..choice.&quot;),&quot;&quot;,colnames(wideDat)[cols]),fixed=T)
@@ -219,51 +184,48 @@ waitForClick &lt;- function() {
     dat = cbind(wideDat,mapply(makeCat,varsToCondense)) # keep multiple columns as well
     dim(dat)
 
-    # Change all the Checked/unchecked to yes/no
+# Change all the Checked/unchecked to yes/no
     for(col in 1:ncol(dat)) if(length(table(dat[,col]))&gt;1 &amp; levels(as.factor(dat[,col]))[1] ==&quot;Checked&quot;) levels(dat[,col]) = c(&quot;Yes&quot;,&quot;No&quot;)
-    for(col in 1:ncol(dat)) if(length(table(dat[,col]))==1 &amp; !is.na(names(table(dat[,col]))[1]) &amp; names(table(dat[,col]))[1] == &quot;Unchecked&quot;) dat[,col] = &quot;No&quot;
-
-# Single baseline table 
-contTable1 &lt;- function(x) cbind(sprintf(&quot;%.1f&quot;,mean(x,na.rm=T)),sprintf(&quot;%.1f&quot;,sd(x,na.rm=T)))
-binaryTab1 &lt;- function(x) cbind(sum(x,na.rm=T),sprintf(&quot;%.1f&quot;,100*mean(x,na.rm=T)))
-table_singleGroup = rbind(
-    contTable1(dat$pex.age),
-    contTable1(dat$ex.sd.w4),
-    binaryTab1(dat$gender == &quot;Male&quot;),
-    binaryTab1(dat$gold.myDef == &quot;Stage IV&quot;)
-    )
-rownames(table_singleGroup) = c(&quot;Age&quot;,&quot;BMI&quot;,&quot;6min walk&quot;,&quot;Pre-FEV&quot;,&quot;Post-FEV&quot;,&quot;Pre-FVC&quot;,&quot;pi10 avg&quot;,&quot;pi10 thick&quot;,&quot;BODE&quot;,&quot;Dyspnea&quot;,&quot;PSQ&quot;,&quot;SGR&quot;,&quot;HDS Anxiety&quot;,&quot;HDS Depression&quot;,&quot;EXACT Avg&quot;,&quot;EXACT St Dev&quot;,&quot;RS Avg&quot;,&quot;RS St Dev&quot;,&quot;\\\\ Male Gender&quot;,&quot;Current smoker&quot;,&quot;Emphysema&quot;,&quot;Inhaled bronchodilators&quot;,&quot;Inhaled steroid&quot;,&quot;GOLD Stage I&quot;,&quot;GOLD Stage II&quot;,&quot;GOLD Stage III&quot;,&quot;GOLD Stage IV&quot;)
-colnames(table_singleGroup) = c(&quot;mean/N&quot;,&quot;sd/pct&quot;)
-print(xtable(table_singleGroup, caption=&quot;Sample characteristics&quot;),file=outTexReport,tabular.environment=&quot;longtable&quot;,sanitize.rownames=identity)
-
-# Load Times New Roman Font and use in plotting
-install.packages(&quot;extrafont&quot;)
+    for(col in 1:ncol(dat)) if(length(table(dat[,col]))==1 &amp; !is.na(names(table(dat[,col]))[1]) &amp; names(table(dat[,col]))[1] == &quot;Unchecked&quot;) dat[,col] = &quot;No&quot;</code></pre>
+</div>
+<div id="load-times-new-roman-font-and-use-in-plotting" class="section level3">
+<h3>Load Times New Roman Font and use in plotting</h3>
+<p>Note that this is much easier with ggplot.</p>
+<pre class="r"><code>install.packages(&quot;extrafont&quot;)
 library(extrafont)
 # font_import() (takes a long time)
 loadfonts(device=&quot;win&quot;)  #Register fonts for Windows bitmap output
 fonts() # list of fonts 
-plot(1,1,family=&quot;Times New Roman&quot;)
-
-
-    # Overall plot title 
-        par(mar=c(0,0,0,0),xpd=T)
-        plot(0,type=&quot;n&quot;,bty=&quot;n&quot;,axes=F,ylab=&quot;&quot;,xlab=&quot;&quot;); text(-.8,&quot;MEP Increase from Baseline Under PAS by Dose&quot;,cex=2,font=2,family=&quot;Times New Roman&quot;)
-        # Overall legend 
-        par(mar=c(0,0,0,0),xpd=T,family=&quot;Times New Roman&quot;)
-        plot(0,type=&quot;n&quot;,bty=&quot;n&quot;,axes=F,ylab=&quot;&quot;,xlab=&quot;&quot;); legend(&quot;top&quot;,col=2,lwd=4,c(&quot;Mean change from baseline&quot;),bty=&quot;n&quot;,cex=1.5)
-
-# Print long table into markdown
-  kable(., format=&quot;html&quot;) %&gt;%
+plot(1,1,family=&quot;Times New Roman&quot;)</code></pre>
+</div>
+<div id="overall-plot-title" class="section level3">
+<h3>Overall plot title</h3>
+<pre class="r"><code>par(mar=c(0,0,0,0),xpd=T)
+plot(0,type=&quot;n&quot;,bty=&quot;n&quot;,axes=F,ylab=&quot;&quot;,xlab=&quot;&quot;)
+text(-.8,&quot;MEP Increase from Baseline Under PAS by Dose&quot;,cex=2,font=2,family=&quot;Times New Roman&quot;)</code></pre>
+</div>
+<div id="overall-legend" class="section level3">
+<h3>Overall legend</h3>
+<pre class="r"><code>par(mar=c(0,0,0,0),xpd=T,family=&quot;Times New Roman&quot;)
+plot(0,type=&quot;n&quot;,bty=&quot;n&quot;,axes=F,ylab=&quot;&quot;,xlab=&quot;&quot;)
+legend(&quot;top&quot;,col=2,lwd=4,c(&quot;Mean change from baseline&quot;),bty=&quot;n&quot;,cex=1.5)</code></pre>
+</div>
+</div>
+<div id="print-long-table-into-markdown" class="section level1">
+<h1>Print long table into markdown</h1>
+<pre class="r"><code>kable(., format=&quot;html&quot;) %&gt;%
   kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;), 
-                full_width = F, position = &quot;center&quot;) %&gt;% scroll_box(height = &quot;500px&quot;)
-
-# PLot of coefficients
-m1 = glm(onset ~ warl + gdpenl + lpopl1 + lmtnest + ncontig + Oil + nwstate + instab + polity2l + ethfrac + relfrac, data = df, family = &quot;binomial&quot;)
+                full_width = F, position = &quot;center&quot;) %&gt;% 
+  scroll_box(height = &quot;500px&quot;)</code></pre>
+<div id="plot-of-coefficients" class="section level3">
+<h3>Plot of coefficients</h3>
+<pre class="r"><code>m1 = glm(onset ~ warl + gdpenl + lpopl1 + lmtnest + ncontig + Oil + nwstate + instab + polity2l + ethfrac + relfrac, data = df, family = &quot;binomial&quot;)
 library(coefplot)
-coefplot(m1)
-
-# Markdown barplot with percents and counts
-dat %&gt;% 
+coefplot(m1)</code></pre>
+</div>
+<div id="markdown-barplot-with-percents-and-counts" class="section level3">
+<h3>Markdown barplot with percents and counts</h3>
+<pre class="r"><code>dat %&gt;% 
   filter(!is.na(adt_s)) %&gt;% 
   ggplot(aes(x=adt_s,  group=SPOPmut_m)) + 
   geom_bar(aes(y = ..prop.., fill = factor(..x..)), stat=&quot;count&quot;) +
@@ -273,10 +235,11 @@ dat %&gt;%
   facet_grid(~SPOPmut_m) +
   scale_y_continuous(labels=percent) +
   labs(title=&quot;adt_s by SPOP mutation status&quot;,subtitle=paste0(&quot;Chisq p=&quot;,round(chisq.test(dat$SPOPmut_m,dat$adt_s)$p.val,3))) +
-  guides(fill=FALSE)
-
- ## Lasagna plot
-# library(devtools); install_github(&quot;swihart/lasagnar&quot;)
+  guides(fill=FALSE)</code></pre>
+</div>
+<div id="lasagna-plot" class="section level3">
+<h3>Lasagna plot</h3>
+<pre class="r"><code># library(devtools); install_github(&quot;swihart/lasagnar&quot;)
 library(lasagnar)
 longDat %&gt;%
   right_join(select(dat_xWeeks,subjid,longestEvent_28d56d)) %&gt;%
@@ -293,10 +256,11 @@ rownames(df) &lt;- as.numeric(as.factor(df$timesubjid))
 df$timesubjid = NULL
 matrix = as.matrix(df)
 
-lasagna(matrix)
-
-# Dataset with pairwise p values to plot
-paris &lt;- combn(levels(dat_all$GOLD_arabicNum_GOLDold), 2, simplify = FALSE)
+lasagna(matrix)</code></pre>
+</div>
+<div id="dataset-with-pairwise-p-values-to-plot" class="section level3">
+<h3>Dataset with pairwise p values to plot</h3>
+<pre class="r"><code>paris &lt;- combn(levels(dat_all$GOLD_arabicNum_GOLDold), 2, simplify = FALSE)
 pairs_pval &lt;- tidy(with(dat_all[ dat_all$cohort %in% c(&quot;1st&quot;,&quot;2nd&quot;),], pairwise.wilcox.test(mtDNA_log10, GOLD_arabicNum_GOLDold, p.adjust.method = &quot;BH&quot;)))
 dat_pairs &lt;- do.call(rbind.data.frame, paris)
 colnames(dat_pairs) &lt;- colnames(pairs_pval)[-3]
@@ -315,10 +279,11 @@ dat_all %&gt;%
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title=&quot;mtDNA by GOLD in 1st and 2nd cohorts&quot;,y=&quot;Log 10 mtDNA&quot;,x=&quot;&quot;) +
   geom_signif(comparisons=paris,textsize = 3.5, vjust = 0.1, step_increase=0.15,
-            annotation= pv_final$p.value_f) 
-
-  # REDCAp to Rmd
-read_csv(here(&quot;Docs_2018_0403/ClinicalGenomicsOfCa_DATA_LABELS_2018-04-03_1419.csv&quot;)) %&gt;% 
+            annotation= pv_final$p.value_f) </code></pre>
+</div>
+<div id="redcap-to-rmd" class="section level2">
+<h2>REDCAp to Rmd</h2>
+<pre class="r"><code>read_csv(here(&quot;Docs_2018_0403/ClinicalGenomicsOfCa_DATA_LABELS_2018-04-03_1419.csv&quot;)) %&gt;% 
   clean_names() %&gt;% 
   mutate_all(funs(checkedToYes)) %&gt;% 
   mutate_all(funs(uncheckedToNo)) %&gt;% 
@@ -326,6 +291,7 @@ read_csv(here(&quot;Docs_2018_0403/ClinicalGenomicsOfCa_DATA_LABELS_2018-04-03_1
   select(-contains(&quot;complete&quot;)) 
   filter(repeat_instrument == &quot;Biopsies&quot;) %&gt;% 
   remove_empty_cols() # from janitor package</code></pre>
+</div>
 </div>
 
 
