@@ -1,0 +1,14 @@
+---
+title: "Package description"
+author: "Clara Oromendia"
+date: "7/13/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R package with the suite of functions I use for daiy work. Page with common plots will be added soon. 

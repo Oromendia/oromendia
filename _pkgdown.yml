@@ -3,12 +3,27 @@ url: https://oromendia.github.io/oromendia/
 template:
   params:
     bootswatch: flatly
+
 reference:
-  - title: Exported Functions
-    desc: Functions exported by oromendia
-    contents:
+  - title: "Regressions"
+    desc: >
+      Functions for outputting regressions in a digestible manner
+    contents: 
       - '`cleanupForMarkdown_univAndMultiGLM`'
+      - '`extract_mod_zeroinf_count`'
+      - '`format_crr`'
+      - '`format_tidy_cox`'
+      - '`format_tidy_coxme`'
+      - '`format_tidy_gen`'
+      - '`format_tidy_lm`'
+      - '`myLinear_coefTable`'
+      - '`myLogistic_coefTable`'
+  - title: "Miscelaneous"
+    desc: "Functions for other tasks."
+    contents:
+      - '`format_pval`'
       - '`COCreateTableOne`'
+      - '`ggplotRegression`'
 navbar:
   type: inverse
   left:
