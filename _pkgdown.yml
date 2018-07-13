@@ -23,6 +23,9 @@ reference:
       - '`format_pval`'
       - '`COCreateTableOne`'
       - '`ggplotRegression`'
+  - title: Vignettes
+    contents:
+    - start_vignette
 articles:
   - title: "R snippets"
     desc: >
