@@ -23,9 +23,6 @@ reference:
       - '`format_pval`'
       - '`COCreateTableOne`'
       - '`ggplotRegression`'
-  - title: Vignettes
-    contents:
-    - GGPlotHints
 
 articles:
   - title: "Plot snippets"
@@ -44,7 +41,7 @@ navbar:
     - text: "Code Examples"
       href: RCodeHints.html
     - text: "Common Plots"
-      href: GGPlotHints.html
+      href: articles/GGPlotHints.html
   right:    
     - icon: fa-github fa-lg
       text: "github"
