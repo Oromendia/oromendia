@@ -23,12 +23,15 @@ reference:
       - '`format_pval`'
       - '`COCreateTableOne`'
       - '`ggplotRegression`'
+  - title: Vignettes
+    contents:
+    - GGPlotHints
 articles:
   - title: "R snippets"
     desc: >
       R code Hints
     contents:
-    - RCodeHints
+    - GGPlotHints
 
 navbar:
   type: inverse
