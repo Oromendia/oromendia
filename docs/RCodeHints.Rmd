@@ -68,41 +68,6 @@ waitForClick()
 
 <br><br><br>
 
-### Format REDCap data nicely
-```{r}
-# Format nicely categorical variables
-makeCat <- function(varNm){
-  cols = grep(varNm,colnames(wideDat))
-	cats = gsub(".","",gsub(paste0(varNm,"..choice."),"",colnames(wideDat)[cols]),fixed=T)
-	all = NA
-	for (c in 1:length(cats)) {
-	  all[wideDat[,cols[c]] == "Checked"] = paste(all[wideDat[,cols[c]] == "Checked"],cats[c])
-	}
-	all = gsub("NA ","",all)
-	return(all)
-}
-# Add more as needed for analysis
-varsToCondense = c("Gastrointestinal.symptoms")
-dat = subset(wideDat, select = c(colnames(wideDat)[-grep("choice..",colnames(wideDat))]))
-dat = cbind(wideDat,mapply(makeCat,varsToCondense)) # keep multiple columns as well
-dim(dat)
-
-# Change all checked/unchecked columns to yes/no
-for(col in 1:ncol(dat)) {
-  if(length(table(dat[,col]))>1 & levels(as.factor(dat[,col]))[1] =="Checked"){
-    levels(dat[,col]) = c("Yes","No")
-  }
-}
-for(col in 1:ncol(dat)) {
-  if(length(table(dat[,col]))==1 & !is.na(names(table(dat[,col]))[1]) & names(table(dat[,col]))[1] == "Unchecked") {
-    dat[,col] = "No"
-  }
-}
-```
-
-<br><br><br>
-
-
 ### Load Times New Roman Font and use in plotting
 
 Note that this is much easier with ggplot. 
@@ -226,7 +191,7 @@ dat_all %>%
 
 <br><br><br>
 
-### REDCap to Rmd
+### REDCap to tibble using tidyverse
 ```{r}
 read_csv(here("Docs_2018_0403/ClinicalGenomicsOfCa_DATA_LABELS_2018-04-03_1419.csv")) %>% 
   clean_names() %>% 
@@ -238,6 +203,39 @@ read_csv(here("Docs_2018_0403/ClinicalGenomicsOfCa_DATA_LABELS_2018-04-03_1419.c
   remove_empty_cols() # from janitor package
 ```
 
+<br><br><br>
+
+### REDCap to data frame using base R
+```{r}
+# Format nicely categorical variables
+makeCat <- function(varNm){
+  cols = grep(varNm,colnames(wideDat))
+	cats = gsub(".","",gsub(paste0(varNm,"..choice."),"",colnames(wideDat)[cols]),fixed=T)
+	all = NA
+	for (c in 1:length(cats)) {
+	  all[wideDat[,cols[c]] == "Checked"] = paste(all[wideDat[,cols[c]] == "Checked"],cats[c])
+	}
+	all = gsub("NA ","",all)
+	return(all)
+}
+# Add more as needed for analysis
+varsToCondense = c("Gastrointestinal.symptoms")
+dat = subset(wideDat, select = c(colnames(wideDat)[-grep("choice..",colnames(wideDat))]))
+dat = cbind(wideDat,mapply(makeCat,varsToCondense)) # keep multiple columns as well
+dim(dat)
+
+# Change all checked/unchecked columns to yes/no
+for(col in 1:ncol(dat)) {
+  if(length(table(dat[,col]))>1 & levels(as.factor(dat[,col]))[1] =="Checked"){
+    levels(dat[,col]) = c("Yes","No")
+  }
+}
+for(col in 1:ncol(dat)) {
+  if(length(table(dat[,col]))==1 & !is.na(names(table(dat[,col]))[1]) & names(table(dat[,col]))[1] == "Unchecked") {
+    dat[,col] = "No"
+  }
+}
+```
 
 <style type="text/css">
 
