@@ -3,7 +3,6 @@ url: https://oromendia.github.io/oromendia/
 template:
   params:
     bootswatch: flatly
-
 reference:
   - title: "Regressions"
     desc: >
