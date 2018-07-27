@@ -9,18 +9,19 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,eval = TRUE)
+knitr::opts_chunk$set(echo = TRUE,eval = TRUE,fig.width = 4,fig.height=2.5)
 library(tidyverse)
+data(CO2)
+
 ```
 
-This is a collection of plots I find myself making often. 
+This is a collection of plots I find myself making often using data from `CO2` and `mtcars`. The `tidyverse` package is assumed to be loaded, and other packages needed are explcitly shown in code.
 
 
-### Specify colors
+### Colors
 
 By overall: 
 ```{r}
-data(CO2)
 CO2 %>% ggplot(aes(conc,uptake,col=Treatment)) + geom_point() +
   scale_color_manual(values = c("red","green"))
 ```
@@ -50,7 +51,7 @@ CO2 %>% ggplot(aes(conc,uptake,col=Treatment)) + geom_point() +
   scale_color_brewer(type="seq",direction = 1) 
 ```
 
-Greadient:
+Gradient:
 ```{r}
 CO2 %>% ggplot(aes(conc,uptake,col=conc)) + geom_point() +
   scale_color_gradient(low="blue", high="red")
@@ -64,16 +65,6 @@ CO2 %>% filter(Treatment == "chilled") %>%
 ```
 
 More info at http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually
-
-
-### Scatter plot 
-
-```{r}
-data(CO2)
-CO2 %>% 
-  ggplot(aes(conc,uptake)) +
-  geom_point()
-```
 
 
 ### Plot of regression coefficients
