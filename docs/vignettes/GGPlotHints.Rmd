@@ -16,6 +16,56 @@ library(tidyverse)
 This is a collection of plots I find myself making often. 
 
 
+### Specify colors
+
+By overall: 
+```{r}
+data(CO2)
+CO2 %>% ggplot(aes(conc,uptake,col=Treatment)) + geom_point() +
+  scale_color_manual(values = c("red","green"))
+```
+
+Categories in order unless specified: 
+```{r}
+data(CO2)
+CO2 %>% ggplot(aes(conc,uptake,col=Treatment)) + geom_point() +
+  scale_color_manual(values = c("chilled"="red","nonchilled"="green"))
+```
+
+GGplot default:
+```{r}
+CO2 %>% ggplot(aes(conc,uptake,col=Treatment)) + geom_point() +
+  scale_color_manual(values = c("#F8766D","#00BFC4"))
+```
+
+Brewer palette
+```{r}
+CO2 %>% ggplot(aes(conc,uptake,col=Treatment)) + geom_point() +
+  scale_color_brewer(palette = "Dark2")
+```
+
+Type of scale: seq, div, qual
+```{r}
+CO2 %>% ggplot(aes(conc,uptake,col=Treatment)) + geom_point() +
+  scale_color_brewer(type="seq",direction = 1) 
+```
+
+Greadient:
+```{r}
+CO2 %>% ggplot(aes(conc,uptake,col=conc)) + geom_point() +
+  scale_color_gradient(low="blue", high="red")
+```
+
+Keep levels even if not in subset plotted
+```{r}
+CO2 %>% filter(Treatment == "chilled") %>%
+  ggplot(aes(conc,uptake,col=Treatment)) + geom_point() +
+  scale_color_manual(values = c("#F8766D","#00BFC4"),drop  = FALSE)
+```
+
+More info at http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually
+
+
 ### Scatter plot 
 
 ```{r}

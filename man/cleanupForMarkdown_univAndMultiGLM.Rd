@@ -16,4 +16,5 @@ This is a wrapper around univAndMultiGLM to print correctly in Rmd files
 cleanupForMarkdown_univAndMultiGLM()
 
 
+
 }

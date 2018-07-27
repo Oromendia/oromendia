@@ -31,7 +31,7 @@ COCreateTableOne <- function(data_here,...,caption="Table",
     temp
 
   # Extract which rows should be indented
-  whichRowsCat = grep("mean|%|n",temp$Var,invert = T)
+  whichRowsCat = grep("mean|%|^n$",temp$Var,invert = T)
 
   # Print
   temp %>%

@@ -237,3 +237,16 @@ for(col in 1:ncol(dat)) {
   }
 }
 ```
+
+### R to Excel 
+
+I use this to create a sheet for each table and figure for a manucript
+```{r}
+# Create Excel of select results
+#https://trinkerrstuff.wordpress.com/2018/02/14/easily-make-multi-tabbed-xlsx-files-with-openxlsx/
+library(openxlsx) 
+filename <- paste0("manuscriptFigs_",format(Sys.Date(),"%Y_%m_%d"),".xlsx")
+wb <- createWorkbook(type="xlsx")`
+
+```
+
