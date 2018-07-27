@@ -12,7 +12,7 @@ vignette: >
 knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
 ```
 
-This is a collection of snippets I find myself repeating or searching. 
+This is a collection of snippets I find myself repeating or searching. Change July 27.
 
 ### Linear mixed models 
 

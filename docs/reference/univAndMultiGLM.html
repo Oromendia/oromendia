@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Extract output from univAndMultiGLM — cleanupForMarkdown_univAndMultiGLM • oromendia</title>
+<title>Make a table with univariable and multivariable logistic results — univAndMultiGLM • oromendia</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,7 @@
 
 
 
-<meta property="og:title" content="Extract output from univAndMultiGLM — cleanupForMarkdown_univAndMultiGLM" />
-
-<meta property="og:description" content="This is a wrapper around univAndMultiGLM to print correctly in Rmd files" />
+<meta property="og:title" content="Make a table with univariable and multivariable logistic results — univAndMultiGLM" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -104,42 +102,74 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Extract output from univAndMultiGLM</h1>
+    <h1>Make a table with univariable and multivariable logistic results</h1>
     
-    <div class="hidden name"><code>cleanupForMarkdown_univAndMultiGLM.Rd</code></div>
+    <div class="hidden name"><code>univAndMultiGLM.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    
-    <p>This is a wrapper around univAndMultiGLM to print correctly in Rmd files</p>
-    
+
     </div>
 
-    <pre class="usage"><span class='fu'>cleanupForMarkdown_univAndMultiGLM</span>(<span class='no'>mod_matrix</span>)</pre>
+    <pre class="usage"><span class='fu'>univAndMultiGLM</span>(<span class='no'>outcome</span>, <span class='no'>covars_uni</span>, <span class='kw'>covars_multi</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>p_multiV</span> <span class='kw'>=</span> <span class='fl'>0.05</span>,
+  <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"binomial"</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>d</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>d_pVal</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>CIs</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>z0</span> <span class='kw'>=</span> <span class='fl'>1.96</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"GLM"</span>, <span class='kw'>widthCharCol</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>markdown</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>mod_matrix</th>
-      <td><p>Output from univAndMultiGLM</p></td>
+      <th>outcome</th>
+      <td><p>Vector of outcome</p></td>
+    </tr>
+    <tr>
+      <th>covars_uni</th>
+      <td><p>Matrix with columns to be used in univariable models</p></td>
+    </tr>
+    <tr>
+      <th>covars_multi</th>
+      <td><p>Matrix with columns to be used in multivariable models. If NULL, univariable predictors with p &lt; 0.05 will be used. Default in NULL.</p></td>
+    </tr>
+    <tr>
+      <th>p_multiV</th>
+      <td><p>ANOVA p-value threshold used for inclusion in multiariable model. Ignored if covars_multi passed in. Default is p &lt;0.05.</p></td>
+    </tr>
+    <tr>
+      <th>family</th>
+      <td><p>Model family for GLM: "binomial", "gaussian", "poisson". Defualt is "binomial."</p></td>
+    </tr>
+    <tr>
+      <th>file</th>
+      <td><p>File name for LaTeX output to be sent to.</p></td>
+    </tr>
+    <tr>
+      <th>d</th>
+      <td><p>Decimal places used for HR and confidence interval. Default is 2.</p></td>
+    </tr>
+    <tr>
+      <th>d_pVal</th>
+      <td><p>Decimal places used for p value. Default is 3.</p></td>
+    </tr>
+    <tr>
+      <th>CIs</th>
+      <td><p>Logical to indicate whether confidence intervals should be printed. Default is TRUE.</p></td>
+    </tr>
+    <tr>
+      <th>z0</th>
+      <td><p>Critical value used for confidence interval. Default is 1.96 (95<!-- % CI).} --></p>
+<p>nameName of model to be used for caption</p>
+<p>widthCharColWidth of first column with predictor names and levels. Default is 6.</p>
+<p>markdownBoolean to indicate that output be compatible with markdown rather than LaTeX. Default is FALSE.</p></td>
     </tr>
     </table>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>cleanupForMarkdown_univAndMultiGLM</span>()</div><div class='output co'>#&gt; <span class='message'>Loading required package: tibble</span></div><div class='output co'>#&gt; <span class='error'>Error in colnames(mod_matrix)[which(colnames(mod_matrix) == "")] = "-": argument "mod_matrix" is missing, with no default</span></div><div class='input'>
-
-
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+                </ul>
 
   </div>
 </div>
