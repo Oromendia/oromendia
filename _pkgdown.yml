@@ -3,6 +3,7 @@ url: https://oromendia.github.io/oromendia/
 template:
   params:
     bootswatch: spacelab
+    ganalytics: UA-123405546-1
 reference:
   - title: "Regressions"
     desc: >
