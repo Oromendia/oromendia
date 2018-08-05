@@ -3,8 +3,9 @@
 #' This is a wrapper around univAndMultiGLM to print correctly in Rmd files
 #' @param mod_matrix Output from univAndMultiGLM
 #' @examples
+#' \dontrun{
 #' cleanupForMarkdown_univAndMultiGLM()
-#'
+#'}
 #'
 #'
 cleanupForMarkdown_univAndMultiGLM <- function(mod_matrix){

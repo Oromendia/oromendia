@@ -17,5 +17,8 @@ format_crr(crr_mod, d = 2, d_pVal = 3)
 This is a wrapper around broom:::tidy that adds formatted confidence intervals and p values
 }
 \examples{
+\dontrun{
 format_crr()
+}
+
 }

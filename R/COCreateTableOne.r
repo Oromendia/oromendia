@@ -6,7 +6,9 @@
 #' @param caption able title
 #' @keywords tableone
 #' @export
-#' @examples
+#' @examples 
+#' COCreateTableOne(mtcars)
+#' 
 COCreateTableOne <- function(data_here,...,caption="Table",
                              # options for print.tableone, with some defaults changed
                              catDigits = 1, contDigits = 2, pDigits = 3, missing = FALSE, explain = TRUE,
@@ -16,7 +18,7 @@ COCreateTableOne <- function(data_here,...,caption="Table",
                              # Kable styling options
                              full_width=F){
 
-	require(tableone)
+	require(tableone); require(knitr); require(kableExtra)
   # Create the table
   CreateTableOne(data=data_here,...) %>%
     print(noSpaces=T,printToggle=F, simulate.p.value=TRUE,

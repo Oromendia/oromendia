@@ -20,4 +20,8 @@ COCreateTableOne(data_here, ..., caption = "Table", catDigits = 1,
 \description{
 This function allows you format the tidy output from broom in a more readable way
 }
+\examples{
+COCreateTableOne(mtcars)
+
+}
 \keyword{tableone}

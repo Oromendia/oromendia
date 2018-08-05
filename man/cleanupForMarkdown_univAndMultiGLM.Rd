@@ -13,8 +13,9 @@ cleanupForMarkdown_univAndMultiGLM(mod_matrix)
 This is a wrapper around univAndMultiGLM to print correctly in Rmd files
 }
 \examples{
+\dontrun{
 cleanupForMarkdown_univAndMultiGLM()
-
+}
 
 
 }

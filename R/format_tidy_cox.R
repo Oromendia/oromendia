@@ -7,8 +7,9 @@
 #' @keywords tidy
 #' @export
 #' @examples
+#' \dontrun{
 #' #format_tidy_cox()
-#'
+#'}
 format_tidy_cox <- function(rslt,d=2,d_pVal=3){
   digi <- paste0("%.",d,"f")
   cbind(

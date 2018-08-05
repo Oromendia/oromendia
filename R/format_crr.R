@@ -5,7 +5,10 @@
 #' @param d Decimal places used for HR and confidence interval
 #' @param d_pVal Decimal places used for p value.
 #' @examples
+#' \dontrun{
 #' format_crr()
+#' }
+#' 
 format_crr <- function(crr_mod,d=2,d_pVal=3){
   digi <- paste0("%.",d,"f")
   crr_coef = summary(crr_mod)$conf.int

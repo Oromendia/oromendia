@@ -8,6 +8,7 @@ reference:
     desc: >
       Functions for outputting regressions in a digestible manner.
     contents: 
+      - '`univAndMultiGLM`'
       - '`cleanupForMarkdown_univAndMultiGLM`'
       - '`extract_mod_zeroinf_count`'
       - '`format_crr`'
@@ -25,10 +26,11 @@ reference:
       - '`ggplotRegression`'
 
 articles:
-  - title: "Plot snippets"
+  - title: "Helpful snippets"
     desc: >
-      Plot code Hints
+      Code & Hints
     contents:
+    - RCodeHints
     - GGPlotHints
 
 navbar:

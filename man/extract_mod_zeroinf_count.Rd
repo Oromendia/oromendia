@@ -13,7 +13,8 @@ extract_mod_zeroinf_count(mod_zeroinf, digits = 2)
 This is a wrapper around univAndMultiGLM which presents both binomial and Poisson coefficients
 }
 \examples{
+\dontrun{
 extract_mod_zeroinf_count()
-
+}
 
 }

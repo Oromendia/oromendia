@@ -13,32 +13,34 @@ univAndMultiGLM(outcome, covars_uni, covars_multi = NULL, p_multiV = 0.05,
 
 \item{covars_uni}{Matrix with columns to be used in univariable models}
 
-\item{covars_multi}{Matrix with columns to be used in multivariable models. If NULL, univariable predictors with p < 0.05 will be used. Default in NULL.}
+\item{covars_multi}{Matrix with columns to be used in multivariable models. If NULL, univariable predictors with p < 0.05 will be used.}
 
-\item{p_multiV}{ANOVA p-value threshold used for inclusion in multiariable model. Ignored if covars_multi passed in. Default is p <0.05.}
+\item{p_multiV}{ANOVA p-value threshold used for inclusion in multiariable model. Ignored if covars_multi passed in.}
 
-\item{family}{Model family for GLM: "binomial", "gaussian", "poisson". Defualt is "binomial."}
+\item{family}{Model family for GLM: "binomial", "gaussian", "poisson".}
 
 \item{file}{File name for LaTeX output to be sent to.}
 
-\item{d}{Decimal places used for HR and confidence interval. Default is 2.}
+\item{d}{Decimal places used for HR and confidence interval.}
 
-\item{d_pVal}{Decimal places used for p value. Default is 3.}
+\item{d_pVal}{Decimal places used for p value.}
 
-\item{CIs}{Logical to indicate whether confidence intervals should be printed. Default is TRUE.}
+\item{CIs}{Logical to indicate whether confidence intervals should be printed.}
 
-\item{z0}{Critical value used for confidence interval. Default is 1.96 (95% CI).}
+\item{z0}{Critical value used for confidence interval.}
 
 \item{name}{Name of model to be used for caption}
 
-\item{widthCharCol}{Width of first column with predictor names and levels. Default is 6.}
+\item{widthCharCol}{Width of first column with predictor names and levels.}
 
-\item{markdown}{Boolean to indicate that output be compatible with markdown rather than LaTeX. Default is FALSE.}
+\item{markdown}{Boolean to indicate that output be compatible with markdown rather than LaTeX.}
 }
 \description{
 Given a dataset, make two column output with univariable results for each predictor, and second column with single multivariable model
 }
 \examples{
-#univAndMultiGLM()
+dontrun{
+univAndMultiGLM()
+}
 
 }

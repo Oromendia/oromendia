@@ -3,20 +3,21 @@
 #' Given a dataset, make two column output with univariable results for each predictor, and second column with single multivariable model
 #' @param outcome Vector of outcome
 #' @param covars_uni Matrix with columns to be used in univariable models
-#' @param covars_multi Matrix with columns to be used in multivariable models. If NULL, univariable predictors with p < 0.05 will be used. Default in NULL.
-#' @param p_multiV ANOVA p-value threshold used for inclusion in multiariable model. Ignored if covars_multi passed in. Default is p <0.05. 
-#' @param family Model family for GLM: "binomial", "gaussian", "poisson". Defualt is "binomial."
+#' @param covars_multi Matrix with columns to be used in multivariable models. If NULL, univariable predictors with p < 0.05 will be used.
+#' @param p_multiV ANOVA p-value threshold used for inclusion in multiariable model. Ignored if covars_multi passed in. 
+#' @param family Model family for GLM: "binomial", "gaussian", "poisson".
 #' @param name Name of model to be used for caption
-#' @param d Decimal places used for HR and confidence interval. Default is 2.
-#' @param d_pVal Decimal places used for p value. Default is 3.
-#' @param CIs Logical to indicate whether confidence intervals should be printed. Default is TRUE.
-#' @param z0 Critical value used for confidence interval. Default is 1.96 (95% CI).
+#' @param d Decimal places used for HR and confidence interval.
+#' @param d_pVal Decimal places used for p value.
+#' @param CIs Logical to indicate whether confidence intervals should be printed.
+#' @param z0 Critical value used for confidence interval.
 #' @param file File name for LaTeX output to be sent to.
-#' @param widthCharCol Width of first column with predictor names and levels. Default is 6.
-#' @param markdown Boolean to indicate that output be compatible with markdown rather than LaTeX. Default is FALSE.
-#' 
+#' @param widthCharCol Width of first column with predictor names and levels.
+#' @param markdown Boolean to indicate that output be compatible with markdown rather than LaTeX.
 #' @examples
-#' #univAndMultiGLM()
+#' dontrun{
+#' univAndMultiGLM()
+#' }
 #' 
 univAndMultiGLM <- function(outcome,covars_uni,covars_multi=NULL,p_multiV = 0.05,family="binomial",file="",d=2,d_pVal=3,CIs=TRUE,z0=1.96,name="GLM",widthCharCol = 6,markdown=FALSE){
   

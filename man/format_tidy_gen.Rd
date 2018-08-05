@@ -5,10 +5,10 @@
 \title{Print generic regression output with CI and P values}
 \usage{
 format_tidy_gen(rslt, d = 2, d_pVal = 3, sub_out = NULL, sub_in = NULL,
-  exponentiate_here = FALSE, Beta = "Beta", removeIntercept = TRUE)
+  exponentiate_here = FALSE, Beta = "Beta", reportIntercept = FALSE)
 }
 \arguments{
-\item{rslt}{Output from coxph(Surv(time,event~stat)) %>% tidy(exponentiate=T)}
+\item{rslt}{Output from regression (lm, glm, or coxPH)}
 
 \item{d}{Decimal places used for HR and confidence interval}
 
@@ -18,12 +18,18 @@ format_tidy_gen(rslt, d = 2, d_pVal = 3, sub_out = NULL, sub_in = NULL,
 
 \item{sub_in}{String to from variable names to replace instead of sub_out}
 
-\item{exponentiate_here}{Select whether exponentiation should be done here}
+\item{exponentiate_here}{Select whether exponentiation should be done (CoxPH, Poisson, etc.). Default is FALSE}
+
+\item{Beta}{Label for coefficient. Default is 'Beta'}
+
+\item{reportIntercept}{Whether intercept should be reported. Default is FALSE.}
 }
 \description{
 This is a wrapper around broom:::tidy that adds formatted confidence intervals and p values
 }
 \examples{
+dontrun{
 format_tidy_gen()
+}
 }
 \keyword{tidy}

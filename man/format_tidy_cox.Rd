@@ -17,7 +17,8 @@ format_tidy_cox(rslt, d = 2, d_pVal = 3)
 This function allows you format the tidy output from broom in a more readable way
 }
 \examples{
+\dontrun{
 #format_tidy_cox()
-
+}
 }
 \keyword{tidy}

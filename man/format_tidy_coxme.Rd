@@ -21,5 +21,7 @@ format_tidy_coxme(mod, d = 2, d_pVal = 3, sub_out = NULL, sub_in = NULL)
 This is a wrapper around broom:::tidy that adds formatted confidence intervals and p values
 }
 \examples{
+\dontrun{
 format_tidy_coxme()
+}
 }

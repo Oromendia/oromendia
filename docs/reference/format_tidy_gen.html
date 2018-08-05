@@ -31,6 +31,8 @@
 
 
 <meta property="og:title" content="Print generic regression output with CI and P values — format_tidy_gen" />
+
+<meta property="og:description" content="This is a wrapper around broom:::tidy that adds formatted confidence intervals and p values" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -108,33 +110,67 @@
     </div>
 
     <div class="ref-description">
-
+    
+    <p>This is a wrapper around broom:::tidy that adds formatted confidence intervals and p values</p>
+    
     </div>
 
     <pre class="usage"><span class='fu'>format_tidy_gen</span>(<span class='no'>rslt</span>, <span class='kw'>d</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>d_pVal</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>sub_out</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sub_in</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>exponentiate_here</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>Beta</span> <span class='kw'>=</span> <span class='st'>"Beta"</span>, <span class='kw'>removeIntercept</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>exponentiate_here</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>Beta</span> <span class='kw'>=</span> <span class='st'>"Beta"</span>, <span class='kw'>reportIntercept</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>rslt</th>
-      <td><p>Output from coxph(Surv(time,event~stat)) <!-- %&gt;% tidy(exponentiate=T)} --></p>
-<p>dDecimal places used for HR and confidence interval</p>
-<p>d_pValDecimal places used for p value.</p>
-<p>sub_outString to from variable names to replace with sub_in</p>
-<p>sub_inString to from variable names to replace instead of sub_out</p>
-<p>exponentiate_hereSelect whether exponentiation should be done here</p></td>
+      <td><p>Output from regression (lm, glm, or coxPH)</p></td>
+    </tr>
+    <tr>
+      <th>d</th>
+      <td><p>Decimal places used for HR and confidence interval</p></td>
+    </tr>
+    <tr>
+      <th>d_pVal</th>
+      <td><p>Decimal places used for p value.</p></td>
+    </tr>
+    <tr>
+      <th>sub_out</th>
+      <td><p>String to from variable names to replace with sub_in</p></td>
+    </tr>
+    <tr>
+      <th>sub_in</th>
+      <td><p>String to from variable names to replace instead of sub_out</p></td>
+    </tr>
+    <tr>
+      <th>exponentiate_here</th>
+      <td><p>Select whether exponentiation should be done (CoxPH, Poisson, etc.). Default is FALSE</p></td>
+    </tr>
+    <tr>
+      <th>Beta</th>
+      <td><p>Label for coefficient. Default is 'Beta'</p></td>
+    </tr>
+    <tr>
+      <th>reportIntercept</th>
+      <td><p>Whether intercept should be reported. Default is FALSE.</p></td>
     </tr>
     </table>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>dontrun{
+format_tidy_gen()
+}
+</div><div class='output co'>#&gt; <span class='error'>Error: &lt;text&gt;:1:8: unexpected '{'</span>
+#&gt; <span class='error'>1: dontrun{</span>
+#&gt; <span class='error'>           ^</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

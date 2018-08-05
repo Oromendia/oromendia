@@ -7,7 +7,7 @@
 format_tidy_lm(rslt, d = 2, d_pVal = 3)
 }
 \arguments{
-\item{rslt}{Output from lm() %>% tidy()}
+\item{rslt}{Output from lm() then tidy()}
 
 \item{d}{Decimal places used for HR and confidence interval}
 
@@ -17,7 +17,9 @@ format_tidy_lm(rslt, d = 2, d_pVal = 3)
 This function allows you format the tidy output from broom in a more readable way. This has been deprecated and replaced with format_tidy_gen, which also has more options.
 }
 \examples{
+dontrun{
 format_tidy_lm()
+}
 
 }
 \keyword{tidy}

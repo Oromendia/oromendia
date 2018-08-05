@@ -7,7 +7,9 @@
 #' @param sub_out String to from variable names to replace with sub_in
 #' @param sub_in String to from variable names to replace instead of sub_out
 #' @examples
+#' \dontrun{
 #' format_tidy_coxme()
+#' }
 format_tidy_coxme <- function(mod,d=2,d_pVal=3,sub_out = NULL,sub_in = NULL){
   digi <- paste0("%.",d,"f")
   if(!is.null(sub_out)) {Variable = gsub(sub_out,sub_in,names(mod$coef))

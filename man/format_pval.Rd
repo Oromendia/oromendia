@@ -17,6 +17,7 @@ format_pval(raw_p, d = 3, equal = "=")
 This function allows you format the o values including <.001
 }
 \examples{
-format_pval()
+format_pval(0.0001)
+format_pval(0.95,equal = "")
 
 }

@@ -3,8 +3,9 @@
 #' This is a wrapper around univAndMultiGLM which presents both binomial and Poisson coefficients
 #' @param mod_matrix Output from mod_zeroinf
 #' @examples
+#' \dontrun{
 #' extract_mod_zeroinf_count()
-#'
+#'}
 #'
 
 extract_mod_zeroinf_count <- function(mod_zeroinf,digits=2){
@@ -22,7 +23,7 @@ extract_mod_zeroinf_count <- function(mod_zeroinf,digits=2){
   pois_rslt = data.frame(RateRatio = exp(coef(mod_zeroinf)[grep("count_",names(coef(mod_zeroinf)))]))
   pois_rslt$RateRatio = sprintf(paste0("%.",digits,"f"),pois_rslt$RateRatio)
   pois_rslt$CI = paste0("(",sprintf(paste0("%.",digits,"f"),temp[,1]),",",sprintf(paste0("%.",digits,"f"),temp[,2]),")")
-  pois_rslt$p_val = format_pval(coef(summary(mod_zeroinf))$count[,"Pr(>|z|)"],equal="")
+  pois_rslt$p_val = format_pval(coef(summary(mod_zeroinf))$count[,"Pr(>|z|)"],equal="")[-grep("theta",rownames(coef(summary(mod_zeroinf))$count))]
   pois_rslt = pois_rslt[-which(rownames(pois_rslt)=="count_(Intercept)"),]
   rownames(pois_rslt) = gsub("count_","",rownames(pois_rslt))
   pois_rslt = cbind("Var" = rownames(pois_rslt),pois_rslt);rownames(pois_rslt) = NULL
