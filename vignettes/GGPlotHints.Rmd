@@ -39,7 +39,7 @@ CO2 %>% ggplot(aes(conc,uptake,col=Treatment)) + geom_point() +
   scale_color_manual(values = c("#F8766D","#00BFC4"))
 ```
 
-Brewer palette
+Brewer palette:
 ```{r}
 CO2 %>% ggplot(aes(conc,uptake,col=Treatment)) + geom_point() +
   scale_color_brewer(palette = "Dark2")
@@ -57,7 +57,7 @@ CO2 %>% ggplot(aes(conc,uptake,col=conc)) + geom_point() +
   scale_color_gradient(low="blue", high="red")
 ```
 
-Keep levels even if not in subset plotted
+Keep levels even if not in subset plotted:
 ```{r}
 CO2 %>% filter(Treatment == "chilled") %>%
   ggplot(aes(conc,uptake,col=Treatment)) + geom_point() +

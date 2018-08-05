@@ -2,7 +2,7 @@ title: oromendia
 url: https://oromendia.github.io/oromendia/
 template:
   params:
-    bootswatch: flatly
+    bootswatch: spacelab
 reference:
   - title: "Regressions"
     desc: >
