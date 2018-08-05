@@ -3,7 +3,7 @@ Title: Clara Oromendia's suite of R functions
 Version: 0.0.0.9000
 Authors@R: person("Clara", "Oromendia", email = "mco2004@med.cornell.edu", role = c("aut", "cre"))
 Description: Collection of functions for statistical collaborations at Weill Cornell Medicine. Most functions built to be used within an RMarkdown environment exporting to html. 
-BugReports: https:oromendia.github.io/oromendia/issues
+BugReports: https://github.com/oromendia/oromendia/issues
 Depends: R (>= 3.5.0)
 Encoding: UTF-8
 LazyData: true
