@@ -106,7 +106,7 @@
 <h3 class="hasAnchor">
 <a href="#export-r-dataset-for-sas" class="anchor"></a>Export R dataset for SAS</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(foreign)
-<span class="kw"><a href="http://www.rdocumentation.org/packages/foreign/topics/write.foreign">write.foreign</a></span>(<span class="dt">df=</span>dat, <span class="dt">datafile=</span><span class="kw">paste0</span>(dir,<span class="st">"/dat_03_02datafile.csv"</span>), 
+<span class="kw">write.foreign</span>(<span class="dt">df=</span>dat, <span class="dt">datafile=</span><span class="kw">paste0</span>(dir,<span class="st">"/dat_03_02datafile.csv"</span>), 
     <span class="dt">codefile=</span><span class="kw">paste0</span>(dir,<span class="st">"/dat_03_02codeFile.sas"</span>), <span class="dt">package=</span><span class="st">"SAS"</span>)</code></pre></div>
 <p><br><br><br></p>
 </div>
@@ -127,11 +127,11 @@ run;</code></pre></div>
 <a href="#stop-code-until-you-click-continue" class="anchor"></a>Stop code until you click “continue”</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tcltk)
 waitForClick &lt;-<span class="st"> </span><span class="cf">function</span>() {
-    tt &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tcltk/topics/TkWidgets">tktoplevel</a></span>()
-    <span class="kw"><a href="http://www.rdocumentation.org/packages/tcltk/topics/TkCommands">tkpack</a></span>( <span class="kw"><a href="http://www.rdocumentation.org/packages/tcltk/topics/TkWidgets">tkbutton</a></span>(tt, <span class="dt">text=</span><span class="st">'     Yes - SAS code has run     '</span>, <span class="dt">command=</span><span class="cf">function</span>()<span class="kw"><a href="http://www.rdocumentation.org/packages/tcltk/topics/TclInterface">tkdestroy</a></span>(tt)),
+    tt &lt;-<span class="st"> </span><span class="kw">tktoplevel</span>()
+    <span class="kw">tkpack</span>( <span class="kw">tkbutton</span>(tt, <span class="dt">text=</span><span class="st">'     Yes - SAS code has run     '</span>, <span class="dt">command=</span><span class="cf">function</span>()<span class="kw">tkdestroy</span>(tt)),
         <span class="dt">side=</span><span class="st">'bottom'</span>)
-    <span class="kw"><a href="http://www.rdocumentation.org/packages/tcltk/topics/TkCommands">tkbind</a></span>(tt,<span class="st">'&lt;Key&gt;'</span>, <span class="cf">function</span>()<span class="kw"><a href="http://www.rdocumentation.org/packages/tcltk/topics/TclInterface">tkdestroy</a></span>(tt) )
-    <span class="kw"><a href="http://www.rdocumentation.org/packages/tcltk/topics/TkCommands">tkwait.window</a></span>(tt)
+    <span class="kw">tkbind</span>(tt,<span class="st">'&lt;Key&gt;'</span>, <span class="cf">function</span>()<span class="kw">tkdestroy</span>(tt) )
+    <span class="kw">tkwait.window</span>(tt)
 }
 <span class="kw">waitForClick</span>()</code></pre></div>
 <p><br><br><br></p>
@@ -178,7 +178,7 @@ waitForClick &lt;-<span class="st"> </span><span class="cf">function</span>() {
 <a href="#plot-of-regression-coefficients" class="anchor"></a>Plot of regression coefficients</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m1 =<span class="st"> </span><span class="kw">glm</span>(onset <span class="op">~</span><span class="st"> </span>warl <span class="op">+</span><span class="st"> </span>gdpenl <span class="op">+</span><span class="st"> </span>lpopl1 <span class="op">+</span><span class="st"> </span>lmtnest <span class="op">+</span><span class="st"> </span>ncontig <span class="op">+</span><span class="st"> </span>Oil <span class="op">+</span><span class="st"> </span>nwstate <span class="op">+</span><span class="st"> </span>instab <span class="op">+</span><span class="st"> </span>polity2l <span class="op">+</span><span class="st"> </span>ethfrac <span class="op">+</span><span class="st"> </span>relfrac, <span class="dt">data =</span> df, <span class="dt">family =</span> <span class="st">"binomial"</span>)
 <span class="kw">library</span>(coefplot)
-<span class="kw"><a href="http://www.rdocumentation.org/packages/coefplot/topics/coefplot">coefplot</a></span>(m1)</code></pre></div>
+<span class="kw">coefplot</span>(m1)</code></pre></div>
 <p><br><br><br></p>
 </div>
 <div id="markdown-barplot-with-percents-and-counts" class="section level3">

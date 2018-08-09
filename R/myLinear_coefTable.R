@@ -2,6 +2,7 @@
 #'
 #' This is a wrapper around glm to print nicely. Could use broom, but keeping here for backwards compatibility.
 #' @param glm_linear Output from glm(, family = "gaussian")
+#' @export
 #' @examples
 #' myLinear_coefTable()
 #'

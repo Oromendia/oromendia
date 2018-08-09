@@ -4,6 +4,7 @@
 #' @param crr_mod Output from cmprsk
 #' @param d Decimal places used for HR and confidence interval
 #' @param d_pVal Decimal places used for p value.
+#' @export
 #' @examples
 #' \dontrun{
 #' format_crr()

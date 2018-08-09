@@ -4,6 +4,7 @@
 #' @param raw_p Number to be treated as p value
 #' @param d Decimal places used for p value.
 #' @param equal Symbol to include if not <
+#' @export
 #' @examples
 #' format_pval(0.0001)
 #' format_pval(0.95,equal = "")

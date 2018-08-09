@@ -4,9 +4,10 @@
 \alias{univAndMultiGLM}
 \title{Make a table with univariable and multivariable logistic results}
 \usage{
-univAndMultiGLM(outcome, covars_uni, covars_multi = NULL, p_multiV = 0.05,
-  family = "binomial", file = "", d = 2, d_pVal = 3, CIs = TRUE,
-  z0 = 1.96, name = "GLM", widthCharCol = 6, markdown = FALSE)
+univAndMultiGLM(outcome, covars_uni, covars_multi = NULL,
+  p_multiV = 0.05, family = "binomial", file = "", d = 2,
+  d_pVal = 3, CIs = TRUE, z0 = 1.96, name = "GLM",
+  widthCharCol = 6, markdown = FALSE)
 }
 \arguments{
 \item{outcome}{Vector of outcome}

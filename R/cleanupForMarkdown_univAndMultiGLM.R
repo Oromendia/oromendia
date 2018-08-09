@@ -2,6 +2,7 @@
 #'
 #' This is a wrapper around univAndMultiGLM to print correctly in Rmd files
 #' @param mod_matrix Output from univAndMultiGLM
+#' @export
 #' @examples
 #' \dontrun{
 #' cleanupForMarkdown_univAndMultiGLM()

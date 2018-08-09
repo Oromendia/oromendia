@@ -10,6 +10,7 @@
 #' @param Beta Label for coefficient. Default is 'Beta'
 #' @param reportIntercept Whether intercept should be reported. Default is FALSE. 
 #' @keywords tidy
+#' @export
 #' @examples
 #' dontrun{
 #' format_tidy_gen()

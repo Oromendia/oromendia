@@ -2,6 +2,7 @@
 #'
 #' This is a wrapper around univAndMultiGLM which presents both binomial and Poisson coefficients
 #' @param mod_matrix Output from mod_zeroinf
+#' @export
 #' @examples
 #' \dontrun{
 #' extract_mod_zeroinf_count()

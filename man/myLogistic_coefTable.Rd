@@ -7,7 +7,7 @@
 myLogistic_coefTable(glm_log)
 }
 \arguments{
-\item{glm_log}{Output from glm(, family = "binomial")}
+\item{glm_log}{Output from glm, family = "binomial"}
 }
 \description{
 This is a wrapper around glm to print nicely. Could use broom, but keeping here for backwards compatibility.

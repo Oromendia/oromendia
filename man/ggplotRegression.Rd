@@ -11,8 +11,7 @@ ggplotRegression(fit, d = 3, d_pval = 3)
 
 \item{d}{Decimal places used for HR and confidence interval}
 
-\item{d_pval}{Decimal places used for p value.
-ggplotRegression()}
+\item{d_pval}{Decimal places used for p value.}
 }
 \description{
 This is a wrapper around broom:::tidy that adds formatted confidence intervals and p values

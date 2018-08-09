@@ -4,6 +4,7 @@
 #' @param fit Linear model with a single continuous predictor
 #' @param d Decimal places used for HR and confidence interval
 #' @param d_pval Decimal places used for p value.
+#' @export
 #' ggplotRegression()
 ggplotRegression <- function(fit,d=3,d_pval=3){
   require(ggplot2)

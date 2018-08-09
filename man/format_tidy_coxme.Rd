@@ -4,7 +4,8 @@
 \alias{format_tidy_coxme}
 \title{Print Cox Mixed effects regression output with CI and P values}
 \usage{
-format_tidy_coxme(mod, d = 2, d_pVal = 3, sub_out = NULL, sub_in = NULL)
+format_tidy_coxme(mod, d = 2, d_pVal = 3, sub_out = NULL,
+  sub_in = NULL)
 }
 \arguments{
 \item{d}{Decimal places used for HR and confidence interval}

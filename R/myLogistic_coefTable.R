@@ -1,7 +1,8 @@
 #'  Extract nice coef table for  binomial model
 #'
 #' This is a wrapper around glm to print nicely. Could use broom, but keeping here for backwards compatibility.
-#' @param glm_log Output from glm(, family = "binomial")
+#' @param glm_log Output from glm, family = "binomial"
+#' @export
 #' @examples
 #' myLogistic_coefTable()
 #'

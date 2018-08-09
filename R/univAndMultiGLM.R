@@ -14,6 +14,7 @@
 #' @param file File name for LaTeX output to be sent to.
 #' @param widthCharCol Width of first column with predictor names and levels.
 #' @param markdown Boolean to indicate that output be compatible with markdown rather than LaTeX.
+#' @export
 #' @examples
 #' dontrun{
 #' univAndMultiGLM()

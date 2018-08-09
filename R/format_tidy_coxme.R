@@ -6,6 +6,7 @@
 #' @param d_pVal Decimal places used for p value.
 #' @param sub_out String to from variable names to replace with sub_in
 #' @param sub_in String to from variable names to replace instead of sub_out
+#' @export
 #' @examples
 #' \dontrun{
 #' format_tidy_coxme()
