@@ -4,9 +4,8 @@
 \alias{format_tidy_gen}
 \title{Print generic regression output with CI and P values}
 \usage{
-format_tidy_gen(rslt, d = 2, d_pVal = 3, sub_out = NULL,
-  sub_in = NULL, exponentiate_here = FALSE, Beta = "Beta",
-  reportIntercept = FALSE)
+format_tidy_gen(rslt, d = 2, d_pVal = 3, sub_out = NULL, sub_in = NULL,
+  exponentiate_here = FALSE, Beta = "Beta", reportIntercept = FALSE)
 }
 \arguments{
 \item{rslt}{Output from regression (lm, glm, or coxPH)}

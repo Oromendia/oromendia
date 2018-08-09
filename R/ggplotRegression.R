@@ -5,7 +5,10 @@
 #' @param d Decimal places used for HR and confidence interval
 #' @param d_pval Decimal places used for p value.
 #' @export
+#' @examples 
+#' \dontrun{
 #' ggplotRegression()
+#' }
 ggplotRegression <- function(fit,d=3,d_pval=3){
   require(ggplot2)
   ggplot(fit$model, aes_string(x = names(fit$model)[2], y = names(fit$model)[1])) + 

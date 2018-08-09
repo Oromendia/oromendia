@@ -16,3 +16,8 @@ ggplotRegression(fit, d = 3, d_pval = 3)
 \description{
 This is a wrapper around broom:::tidy that adds formatted confidence intervals and p values
 }
+\examples{
+\dontrun{
+ggplotRegression()
+}
+}
