@@ -66,6 +66,8 @@ CO2 %>% filter(Treatment == "chilled") %>%
 
 More info at http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually
 
+Comprehensive tutorial: http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/
+
 
 ### Plot of regression coefficients
 ```{r}
