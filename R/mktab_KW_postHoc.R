@@ -12,6 +12,7 @@
 #' }
 mktab_KW_postHoc <- function(var,grp, varNm="Var",file="",notes="",size="scriptsize",d=3){
   # cat(paste(varNm, "Table \n"))
+  library(PMCMR)
   varNm = gsub("_",".",varNm) # underscores to periods 
   rslt = format_pval(posthoc.kruskal.dunn.test(x=var, g=as.factor(grp), p.adjust="BH")$p.value,equal="",d=d)
   print(xtable(rslt,caption=paste0("P-values for pairwise Post-Hoc Kruskal-Wallis test (Dunn test) for ",varNm,". ",notes," Note: only valid if KW is significant."),digits=d),file=file,table.placement="H",include.rownames=T,include.colnames=T,size=size,comment=FALSE)
