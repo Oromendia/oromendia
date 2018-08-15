@@ -12,7 +12,8 @@
 #' mktab_ChiSq_postHoc(mtcars)
 #' }
 mktab_ChiSq_postHoc <- function(var,grp, varNm="Var",file="",notes="",size="scriptsize",d=3,control = "bonferroni",markdown=FALSE){
-  temp = chisq.post.hoc(table(var, grp), popsInRows = FALSE, control = control, digits = d)
+  requireNamespace(fifer)
+  temp = fifer::chisq.post.hoc(table(var, grp), popsInRows = FALSE, control = control, digits = d)
   grp = factor(grp)
   mat = matrix(NA, ncol=(length(levels(grp))-1),nrow=(length(levels(grp))-1))
   colnames(mat)=levels(grp)[-length(levels(grp))]; rownames(mat)=levels(grp)[-1]

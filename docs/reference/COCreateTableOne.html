@@ -150,7 +150,65 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>COCreateTableOne</span>(<span class='no'>mtcars</span>)</div><div class='output co'>#&gt; <span class='message'>Loading required package: tableone</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: knitr</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: kableExtra</span></div><div class='output co'>#&gt; <span class='error'>Error in mutate(., Var = rownames(temp2)): could not find function "mutate"</span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>COCreateTableOne</span>(<span class='no'>mtcars</span>)</div><div class='output co'>#&gt; <span class='message'>Loading required package: tableone</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: knitr</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: kableExtra</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Unknown columns: `test`</span></div><div class='output co'>#&gt; &lt;table class="table table-striped table-condensed table-hover" style="font-size: 11px; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+#&gt; &lt;caption style="font-size: initial !important;"&gt;Table&lt;/caption&gt;
+#&gt;  &lt;thead&gt;
+#&gt;   &lt;tr&gt;
+#&gt;    &lt;th style="text-align:left;"&gt; Var &lt;/th&gt;
+#&gt;    &lt;th style="text-align:left;"&gt; Overall &lt;/th&gt;
+#&gt;   &lt;/tr&gt;
+#&gt;  &lt;/thead&gt;
+#&gt; &lt;tbody&gt;
+#&gt;   &lt;tr&gt;
+#&gt;    &lt;td style="text-align:left;background-color: white;"&gt; n &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;background-color: white;"&gt; 32 &lt;/td&gt;
+#&gt;   &lt;/tr&gt;
+#&gt;   &lt;tr&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; mpg &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; 20.09 (6.03) &lt;/td&gt;
+#&gt;   &lt;/tr&gt;
+#&gt;   &lt;tr&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; cyl &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; 6.19 (1.79) &lt;/td&gt;
+#&gt;   &lt;/tr&gt;
+#&gt;   &lt;tr&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; disp &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; 230.72 (123.94) &lt;/td&gt;
+#&gt;   &lt;/tr&gt;
+#&gt;   &lt;tr&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; hp &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; 146.69 (68.56) &lt;/td&gt;
+#&gt;   &lt;/tr&gt;
+#&gt;   &lt;tr&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; drat &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; 3.60 (0.53) &lt;/td&gt;
+#&gt;   &lt;/tr&gt;
+#&gt;   &lt;tr&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; wt &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; 3.22 (0.98) &lt;/td&gt;
+#&gt;   &lt;/tr&gt;
+#&gt;   &lt;tr&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; qsec &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; 17.85 (1.79) &lt;/td&gt;
+#&gt;   &lt;/tr&gt;
+#&gt;   &lt;tr&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; vs &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; 0.44 (0.50) &lt;/td&gt;
+#&gt;   &lt;/tr&gt;
+#&gt;   &lt;tr&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; am &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; 0.41 (0.50) &lt;/td&gt;
+#&gt;   &lt;/tr&gt;
+#&gt;   &lt;tr&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; gear &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; 3.69 (0.74) &lt;/td&gt;
+#&gt;   &lt;/tr&gt;
+#&gt;   &lt;tr&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; carb &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; 2.81 (1.62) &lt;/td&gt;
+#&gt;   &lt;/tr&gt;
+#&gt; &lt;/tbody&gt;
+#&gt; &lt;/table&gt;</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
