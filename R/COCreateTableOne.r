@@ -20,7 +20,7 @@ COCreateTableOne <- function(data,...,caption="Table",
 
 	require(tableone); require(knitr); require(kableExtra)
   # Create the table
-  CreateTableOne(data=data_here,...) %>%
+  CreateTableOne(data=data,...) %>%
     print(noSpaces=T,printToggle=F, simulate.p.value=TRUE,
           catDigits = catDigits, contDigits = contDigits, pDigits = pDigits,
           missing = missing, explain = explain, test = test, smd = smd, format = format,
