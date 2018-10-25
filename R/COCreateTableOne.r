@@ -9,7 +9,7 @@
 #' @examples 
 #' COCreateTableOne(mtcars)
 #' 
-COCreateTableOne <- function(data_here,...,caption="Table",
+COCreateTableOne <- function(data,...,caption="Table",
                              # options for print.tableone, with some defaults changed
                              catDigits = 1, contDigits = 2, pDigits = 3, missing = FALSE, explain = TRUE,
                              test = TRUE, smd = FALSE, format = c("fp", "f", "p", "pf")[1],
