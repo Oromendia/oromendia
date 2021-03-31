@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction 
 
-This is an R package with the suite of functions I use for daily work. Page with common plots will be added soon. 
+This is an R package with the suite of functions used for daily work. Page with common plots will be added soon. 
 
 Package can be installed by running: 
 ```{r,eval=FALSE}
